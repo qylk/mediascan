@@ -14,7 +14,8 @@ enum
     KeyTitle_PINYIN=KeyTitle+1,
     KeyArtist='TPE1',
     KeyArtist_PINYIN=KeyArtist+1,
-    KeyPATH='PATH'
+    KeyPATH='PATH',
+    KeyLAST_MODIFIED='LSMF'
 };
 
 //using android::RefBase;

@@ -20,18 +20,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	private static final String LIBRARY_DBNAME = "lib.db";
 	private static final String TAG = "DataBaseHelper";
 
-	public static String getLibDBPath() {
+	public static String getLibDBFile() {
 		return DataBaseDIR + LIBRARY_DBNAME;
 	}
 
-	public static String getMediaDBPath() {
+	public static String getMediaDBFile() {
 		return DataBaseDIR + DBNAME;
 	}
 
 	private Context context;
 
 	public DataBaseHelper(Context context) {
-		super(context, getMediaDBPath(), null, DATABASE_VERSION);
+		super(context, getMediaDBFile(), null, DATABASE_VERSION);
+		File dbp = new File(getMediaDBFile());
+		if (!dbp.exists())
+			dbp.getParentFile().mkdirs();
 		this.context = context;
 	}
 
@@ -40,15 +43,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	}
 
 	public SQLiteDatabase getWritableLibDatabase() {
-		String dbpath = getLibDBPath();
-		File dbfile = new File(dbpath);
-		if (dbfile.exists())
-			return SQLiteDatabase.openDatabase(dbpath, null,
+		String lib = getLibDBFile();
+		File libf = new File(lib);
+		if (libf.exists())
+			return SQLiteDatabase.openDatabase(lib, null,
 					SQLiteDatabase.OPEN_READWRITE);
 		else {
-			dbfile.getParentFile().mkdirs();
-			if (copyDataBaseFromAsset(LIBRARY_DBNAME, dbfile))
-				return SQLiteDatabase.openDatabase(dbpath, null,
+			if (copyDataBaseFromAsset(LIBRARY_DBNAME, libf))
+				return SQLiteDatabase.openDatabase(lib, null,
 						SQLiteDatabase.OPEN_READWRITE);
 		}
 		return null;
@@ -56,16 +58,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		Log.i(TAG, "creating media.db into databases folder");
-		db.execSQL("CREATE TABLE [audio](_id integer primary key autoincrement,title text,title_key text,artist text default 'unknown',artist_key text,album text default 'unknown',album_key text,duration long not null,_data text not null)");
-		db.execSQL("CREATE TABLE [tag](_id integer,lang int,genre int,rhythm int,sing_method int,age int,subject int,instrument int,lib_id int,time_modified long,play_times int);");
-		
-		String dbpath = getLibDBPath();
+		String dbpath = getLibDBFile();
 		File dbfile = new File(dbpath);
 		if (!dbfile.exists()) {
 			dbfile.getParentFile().mkdirs();
 			copyDataBaseFromAsset(LIBRARY_DBNAME, dbfile);
 		}
+		Log.i(TAG, "creating media.db into databases folder");
+		db.execSQL("CREATE TABLE [audio](_id integer primary key autoincrement,title text,title_key text,artist text default 'unknown',artist_key text,album text default 'unknown',album_key text,duration long not null,_data text not null,last_modified long default 0)");
+		db.execSQL("CREATE TABLE [tag](_id integer,lang int,genre int,rhythm int,sing_method int,age int,subject int,instrument int,lib_id int,time_modified long,play_times int);");
 	}
 
 	@Override

@@ -110,7 +110,14 @@
  /cygdrive/d/td/project/music_provider/jni/mediascaner/Utils.h \
  /cygdrive/z/android4.0/system/core/include/android/log.h \
  /cygdrive/d/td/project/music_provider/jni/mediascaner/DataBase.h \
- /cygdrive/d/td/project/music_provider/jni/mediascaner/sqlite3.h
+ /cygdrive/d/td/project/music_provider/jni/mediascaner/sqlite3.h \
+ /cygdrive/d/td/project/music_provider/jni/mediascaner/FilesCache.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/vector \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.c \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_range_errors.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_bvector.h
 
 /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/map:
 
@@ -333,3 +340,17 @@
 /cygdrive/d/td/project/music_provider/jni/mediascaner/DataBase.h:
 
 /cygdrive/d/td/project/music_provider/jni/mediascaner/sqlite3.h:
+
+/cygdrive/d/td/project/music_provider/jni/mediascaner/FilesCache.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/vector:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.c:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_range_errors.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_bvector.h:

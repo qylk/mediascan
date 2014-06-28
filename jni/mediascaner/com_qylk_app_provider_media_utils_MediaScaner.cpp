@@ -5,6 +5,7 @@
 #include "MediaScannerClient.h"
 #include "Utils.h"
 #include "DataBase.h"
+#include "FilesCache.h"
 #define DBPATH "/sdcard/media.db"
 
 static const char* dbfile;
@@ -53,7 +54,6 @@ public:
         mEnv->DeleteGlobalRef(mClient);
         delete[] dbfile;
         delete db;
-        delete filecache;
     }
 
     status_t doPostTag(const char* key,const char *value)const
@@ -97,7 +97,8 @@ public:
             {KeyAlbum,FIELD_ALBUM},
             {KeyAlbum_PINYIN,FIELD_ALBUM_KEY},
             {KeyDuratoion,FIELD_DURATION},
-            {KeyPATH,FIELD_PATH}
+            {KeyPATH,FIELD_PATH},
+            {KeyLAST_MODIFIED,FILED_LAST_MODIFIED}
         };
 
         static const size_t KNUM=NELEM(kMaps);
@@ -115,6 +116,16 @@ public:
             db->insertVlaues(item);
         }
         return OK;
+    }
+
+    virtual bool shouldSkip(const char* file,unsigned long &last_modified)
+    {
+        return filecache.check_new(file,last_modified);
+    }
+
+    void postScan()
+    {
+        filecache.delete_missing(db);
     }
 
     virtual  status_t postFile(const char* file)
@@ -222,8 +233,8 @@ static bool processDirectory(JNIEnv *env, jobject thiz, jstring path, jobject cl
     {
         MLOGE("An error occurred while scanning directory '%s'.", pathStr);
     }
+    myclient.postScan();
     env->ReleaseStringUTFChars(path, pathStr);
-
     delete ms;
     ms=NULL;
     return result==MEDIA_SCAN_RESULT_OK;

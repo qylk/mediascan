@@ -15,7 +15,7 @@ public:
     virtual ~MediaScanner();
 
     virtual MediaScanResult processFile(
-        const char *path, MediaScannerClient &client) ;
+        const char *path,unsigned long &last_modified,MediaScannerClient &client) ;
 
     virtual MediaScanResult processDirectory(
         const char *path, MediaScannerClient &client);
@@ -27,7 +27,7 @@ private:
         char *path, int pathRemaining, MediaScannerClient &client, bool noMedia,
         struct dirent* entry, char* fileSpot);
 
-    MediaScanResult ExtractMetaData( const char* path,MediaScannerClient& client);
+    MediaScanResult ExtractMetaData( const char* path,unsigned long &last_modified,MediaScannerClient& client);
     MediaScanner(const MediaScanner &);
     MediaScanner &operator=(const MediaScanner &);
 

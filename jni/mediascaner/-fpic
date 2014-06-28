@@ -1,0 +1,41 @@
+obj\Debug\FilesCache.o: FilesCache.cpp FilesCache.h \
+ D:\TD\Android\android-ndk-r7\sources\cxx-stl\gnu-libstdc++\include/vector \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/string.h \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/sys/cdefs.h \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/sys/cdefs_elf.h \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/malloc.h \
+ DataBase.h \
+ D:\TD\Android\android-ndk-r7\sources\cxx-stl\gnu-libstdc++\include/map \
+ sqlite3.h Utils.h \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/stdint.h \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/sys/_types.h \
+ D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/machine/_types.h \
+ Z:\android4.0\system\core\include/android/log.h
+
+FilesCache.h:
+
+D:\TD\Android\android-ndk-r7\sources\cxx-stl\gnu-libstdc++\include/vector:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/string.h:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/sys/cdefs.h:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/sys/cdefs_elf.h:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/malloc.h:
+
+DataBase.h:
+
+D:\TD\Android\android-ndk-r7\sources\cxx-stl\gnu-libstdc++\include/map:
+
+sqlite3.h:
+
+Utils.h:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/stdint.h:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/sys/_types.h:
+
+D:\TD\Android\android-ndk-r7\platforms\android-3\arch-arm\usr\include/machine/_types.h:
+
+Z:\android4.0\system\core\include/android/log.h:

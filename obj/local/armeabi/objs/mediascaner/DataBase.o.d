@@ -81,6 +81,13 @@
  /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_epilog.h \
  /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h \
  /cygdrive/d/td/project/music_provider/jni/mediascaner/sqlite3.h \
+ /cygdrive/d/td/project/music_provider/jni/mediascaner/FilesCache.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/vector \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.c \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_range_errors.h \
+ /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_bvector.h \
  /cygdrive/d/TD/Android/android-ndk-r7/platforms/android-9/arch-arm/usr/include/sys/stat.h \
  /cygdrive/d/TD/Android/android-ndk-r7/platforms/android-9/arch-arm/usr/include/sys/time.h \
  /cygdrive/d/TD/Android/android-ndk-r7/platforms/android-9/arch-arm/usr/include/linux/time.h \
@@ -268,6 +275,20 @@
 /cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h:
 
 /cygdrive/d/td/project/music_provider/jni/mediascaner/sqlite3.h:
+
+/cygdrive/d/td/project/music_provider/jni/mediascaner/FilesCache.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/vector:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_vector.c:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_range_errors.h:
+
+/cygdrive/d/TD/Android/android-ndk-r7/sources/cxx-stl/stlport/stlport/stl/_bvector.h:
 
 /cygdrive/d/TD/Android/android-ndk-r7/platforms/android-9/arch-arm/usr/include/sys/stat.h:
 

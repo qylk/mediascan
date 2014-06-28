@@ -11,7 +11,7 @@ public:
     virtual ~MediaScannerClient();
     void beginFile(const char*file);
     void endFile(const char*file);
-
+    virtual bool shouldSkip(const char*file,unsigned long &last_modified)=0;
     virtual status_t postTag(sp<MetaData> &meta) = 0;
     virtual status_t postFile(const char* file) = 0;
 

@@ -17,7 +17,8 @@ LOCAL_SRC_FILES := \
 	DataBase.cpp\
 	MpegUtils.cpp\
 	XINGSeeker.cpp\
-	VBRISeeker.cpp
+	VBRISeeker.cpp\
+	FilesCache.cpp
 	
 #LOCAL_SRC_FILES := \
 #	test.cpp\

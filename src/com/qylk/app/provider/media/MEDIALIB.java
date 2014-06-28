@@ -22,7 +22,7 @@ public class MEDIALIB {
 		public static final Uri URI = Uri.parse("content://" + AUTOHORITY_NAME
 				+ '/' + PATH_LIBRARY);
 		public static String getLibDBFilePath() {
-			return DataBaseHelper.getLibDBPath();
+			return DataBaseHelper.getLibDBFile();
 		}
 	}
 	public static final String AUTOHORITY_NAME = "com.qylk.app.provider.medialib";

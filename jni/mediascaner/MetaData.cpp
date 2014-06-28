@@ -13,7 +13,7 @@ MetaData::~MetaData()
 
 bool MetaData::hasKey(const uint32_t &key) const
 {
-   return  mItems.end()!=mItems.find(key);
+    return  mItems.end()!=mItems.find(key);
 }
 
 void MetaData::clear()

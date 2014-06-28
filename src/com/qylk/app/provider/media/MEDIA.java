@@ -5,7 +5,7 @@ import android.net.Uri;
 public final class MEDIA {
 	
 	public static String getDBFilePath() {
-		return DataBaseHelper.getMediaDBPath();
+		return DataBaseHelper.getMediaDBFile();
 	}
 	
 	public static final class AUDIO {

@@ -43,7 +43,7 @@ public class MediaScaner implements MediaScanerClient {
 	}
 
 	private void initBeforeScan(SQLiteDatabase db) {
-		db.execSQL("ATTACH \"" + DataBaseHelper.getLibDBPath() + "\" AS lib0");
+		db.execSQL("ATTACH \"" + DataBaseHelper.getLibDBFile() + "\" AS lib0");
 		db.beginTransaction();
 		db.execSQL("UPDATE lib0.lib set lang=(select lang from tag where tag.lib_id=lib0.lib.id),"
 				+ "genre=(select genre from tag where tag.lib_id=lib0.lib.id),"
@@ -55,13 +55,11 @@ public class MediaScaner implements MediaScanerClient {
 				+ "time_modified=(select time_modified from tag where tag.lib_id=lib0.lib.id),"
 				+ "play_times=(select play_times from tag where tag.lib_id=lib0.lib.id)"
 				+ " where lib0.lib.id=(select lib_id from tag where tag.lib_id=lib0.lib.id)");
-		db.execSQL("delete from audio where _id>0;");
 		db.execSQL("DROP TABLE IF EXISTS [tag];");
 		db.execSQL("DROP TABLE IF EXISTS [artists];");
 		db.execSQL("DROP TABLE IF EXISTS [albums];");
 		db.setTransactionSuccessful();
 		db.endTransaction();
-		// db.execSQL("CREATE TABLE [audio](_id integer primary key,title text,title_key text,artist text,artist_key text,artist_id integer not null,album text,album_key text,album_id integer not null,duration long not null,_data text not null);");
 	}
 
 	private void afterScan(SQLiteDatabase db) {

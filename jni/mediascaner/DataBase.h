@@ -2,6 +2,7 @@
 #define DATABASE_H
 #include <map>
 #include "sqlite3.h"
+#include "FilesCache.h"
 #define FIELD_TITLE  "title"
 #define FIELD_TITLE_KEY  "title_key"
 #define FIELD_ARTIST  "artist"
@@ -10,8 +11,9 @@
 #define FIELD_ALBUM_KEY  "album_key"
 #define FIELD_DURATION "duration"
 #define FIELD_PATH  "_data"
-
+#define FILED_LAST_MODIFIED "last_modified"
 #define TABLE "audio"
+
 using std::map;
 
 class DataBase
@@ -19,10 +21,11 @@ class DataBase
 public:
     DataBase(const char *dbname,FilesCache *filescache);
     void insertVlaues(map<const char*, const char* > &item);
-    void finishDataBase();
+    void deleteValues(int &rowid);
+    void postDB();
     virtual ~DataBase();
 private:
-    void catcheFiles(FilesCache *filecache);
+    //void catcheFiles(FilesCache *filecache);
     sqlite3 *db;
     char    *sqlbuf;
 };

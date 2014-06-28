@@ -165,7 +165,7 @@ MediaScanResult MediaScanner::doProcessDirectoryEntry(char* path, int pathRemain
         if(noMedia)
             return MEDIA_SCAN_RESULT_SKIPPED;
         scanedFileNumber++;
-        MediaScanResult result =processFile(path,client);
+        MediaScanResult result =processFile(path,statbuf.st_mtime,client);
         if (result == MEDIA_SCAN_RESULT_ERROR)
         {
             return MEDIA_SCAN_RESULT_ERROR;
@@ -174,7 +174,7 @@ MediaScanResult MediaScanner::doProcessDirectoryEntry(char* path, int pathRemain
     return MEDIA_SCAN_RESULT_OK;
 }
 
-MediaScanResult MediaScanner::processFile(const char* path,MediaScannerClient& client)
+MediaScanResult MediaScanner::processFile(const char* path,unsigned long &last_modified,MediaScannerClient& client)
 {
     MLOGV("processFile '%s'.", path);
     const char *extension = strrchr(path, '.');//获取后缀名
@@ -188,14 +188,17 @@ MediaScanResult MediaScanner::processFile(const char* path,MediaScannerClient& c
         return MEDIA_SCAN_RESULT_SKIPPED;
     }
 
+    if(client.shouldSkip(path,last_modified))
+        return MEDIA_SCAN_RESULT_SKIPPED;
+
     client.beginFile(path);
-    MediaScanResult result = ExtractMetaData(path,client);
+    MediaScanResult result = ExtractMetaData(path,last_modified,client);
     if(result==MEDIA_SCAN_RESULT_OK)
         client.endFile(path);
     return result;
 }
 
-MediaScanResult MediaScanner::ExtractMetaData(const char* path,MediaScannerClient& client)
+MediaScanResult MediaScanner::ExtractMetaData(const char* path,unsigned long &last_modified,MediaScannerClient& client)
 {
     sp<DataSource> source = new FileSource(path);
     sp<MediaExtractor> extractor=MediaExtractor::Create(source,MEDIA_MIMETYPE_AUDIO_MPEG);
@@ -241,6 +244,7 @@ MediaScanResult MediaScanner::ExtractMetaData(const char* path,MediaScannerClien
             meta->putItem(TYPE_C_STRING,id[i]+1,pinyin,letterNum);
         }
     }
+    meta->putItem(TYPE_INT32,KeyLAST_MODIFIED,&last_modified,0);
     client.postTag(meta);
     return MEDIA_SCAN_RESULT_OK;
 }
