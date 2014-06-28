@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qylk.app.provider.media"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="TEST"
+        android:targetPackage="com.qylk.app.Provider.mediaInfo" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Light" >
+        <activity
+            android:name="com.qylk.app.provider.media.test.AdminPage"
+            android:label="@string/page_label" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library android:name="android.test.runner" />
+
+        <service android:name=".MediaScanService" >
+            <intent-filter>
+                <action android:name="com.qylk.app.provider.media.scanservice" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name=".MediaProvider"
+            android:authorities="com.qylk.app.provider.media"
+            android:exported="true" >
+        </provider>
+        <provider
+            android:name=".LibProvider"
+            android:authorities="com.qylk.app.provider.medialib"
+            android:exported="true" >
+        </provider>
+
+        <receiver android:name="com.qylk.app.provider.media.ScanReceiver" >
+            <intent-filter>
+                <action android:name="com.qylk.app.provider.media.scan" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
