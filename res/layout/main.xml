@@ -11,10 +11,10 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/sync"
+        android:id="@+id/scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sync" />
+        android:text="@string/scan" />
 
     <Button
         android:id="@+id/backup"
@@ -24,10 +24,10 @@
         android:text="@string/backup" />
     
     <Button
-        android:id="@+id/restore"
+        android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/restore" />
+        android:text="@string/update" />
 
 </LinearLayout>

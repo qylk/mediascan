@@ -45,16 +45,19 @@ public class MediaScaner implements MediaScanerClient {
 	private void initBeforeScan(SQLiteDatabase db) {
 		db.execSQL("ATTACH \"" + DataBaseHelper.getLibDBFile() + "\" AS lib0");
 		db.beginTransaction();
-		db.execSQL("UPDATE lib0.lib set lang=(select lang from tag where tag.lib_id=lib0.lib.id),"
-				+ "genre=(select genre from tag where tag.lib_id=lib0.lib.id),"
-				+ "rhythm=(select rhythm from tag where tag.lib_id=lib0.lib.id),"
-				+ "sing_method=(select sing_method from tag where tag.lib_id=lib0.lib.id),"
-				+ "age=(select age from tag where tag.lib_id=lib0.lib.id),"
-				+ "subject=(select subject from tag where tag.lib_id=lib0.lib.id),"
-				+ "instrument=(select instrument from tag where tag.lib_id=lib0.lib.id),"
-				+ "time_modified=(select time_modified from tag where tag.lib_id=lib0.lib.id),"
-				+ "play_times=(select play_times from tag where tag.lib_id=lib0.lib.id)"
-				+ " where lib0.lib.id=(select lib_id from tag where tag.lib_id=lib0.lib.id)");
+		db.execSQL("CREATE TABLE tb_update as select a.id,b.* from lib0.lib a left join tag b on a.id=b.lib_id and a.time_modified < b.time_modified where b._id is not null;");
+		db.execSQL("UPDATE lib0.lib set lang=(select lang from tb_update where tb_update.id=lib0.lib.id),"
+				+ "genre=(select genre from tb_update where tb_update.id=lib0.lib.id),"
+				+ "rhythm=(select rhythm from tb_update where tb_update.id=lib0.lib.id),"
+				+ "sing_method=(select sing_method from tb_update where tb_update.id=lib0.lib.id),"
+				+ "age=(select age from tb_update where tb_update.id=lib0.lib.id),"
+				+ "subject=(select subject from tb_update where tb_update.id=lib0.lib.id),"
+				+ "instrument=(select instrument from tb_update where tb_update.id=lib0.lib.id),"
+				//+ "listentime=(select listentime from tb_update where tb_update.id=lib0.lib.id),"
+				//+ "tag=(select tag from tb_update where tb_update.id=lib0.lib.id),"
+				+ "time_modified=(select time_modified from tb_update where tb_update.id=lib0.lib.id) "
+				+ "where id in(select id from tb_update)");
+		db.execSQL("DROP TABLE tb_update");
 		db.execSQL("DROP TABLE IF EXISTS [tag];");
 		db.execSQL("DROP TABLE IF EXISTS [artists];");
 		db.execSQL("DROP TABLE IF EXISTS [albums];");

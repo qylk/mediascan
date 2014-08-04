@@ -2,8 +2,8 @@
 
     <string name="app_name">我的媒体库</string>
     <string name="page_label">管理媒体库</string>
-    <string name="sync">同步</string>
+    <string name="scan">扫描</string>
     <string name="backup">备份</string>
-    <string name="restore">恢复</string>
+    <string name="update">升级</string>
 
 </resources>
